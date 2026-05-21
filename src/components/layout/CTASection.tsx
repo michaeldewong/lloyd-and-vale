@@ -13,7 +13,7 @@ type CTASectionProps = {
   copy: string;
   primaryCta: CtaLink;
   secondaryCta: CtaLink;
-  imageLabel: string;
+  imageLabel: { label: string; description: string };
   className?: string;
 };
 
@@ -28,11 +28,12 @@ export function CTASection({
   return (
     <Section spacing="lg" tone="muted" className={className}>
       <div className="relative overflow-hidden border border-border bg-surface">
-        <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 opacity-20">
           <ImagePlaceholder
-            aspectRatio="16/9"
-            label={imageLabel}
-            className="h-full min-h-full rounded-none border-0 [&>div]:min-h-[16rem] [&>div]:h-full"
+            label={imageLabel.label}
+            description={imageLabel.description}
+            variant="background"
+            className="h-full rounded-none border-0 [&>div]:h-full [&>div]:max-h-none"
           />
         </div>
         <div className="relative mx-auto max-w-3xl space-y-(--spacing-stack-xl) px-(--spacing-content-lg) py-(--spacing-section) sm:px-(--spacing-section-sm)">

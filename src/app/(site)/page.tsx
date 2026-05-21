@@ -18,13 +18,13 @@ import {
   homeTrustStrip,
 } from "@/content/home";
 
-function imageLabel(filename: string, description: string): string {
-  return `${filename} — ${description}`;
+function placeholderImage(filename: string, description: string) {
+  return { label: filename, description };
 }
 
 export default function HomePage() {
   return (
-    <>
+    <div className="w-full">
       {/* Section 1 — Hero */}
       <header className="border-b border-border bg-surface py-(--spacing-section-sm) md:py-(--spacing-section)">
         <Container>
@@ -56,7 +56,8 @@ export default function HomePage() {
             <div className="order-1 lg:order-2">
               <ImagePlaceholder
                 aspectRatio="3/2"
-                label={imageLabel(
+                variant="default"
+                {...placeholderImage(
                   homeHero.image.filename,
                   homeHero.image.description,
                 )}
@@ -84,10 +85,8 @@ export default function HomePage() {
             title: category.title,
             description: category.description,
             href: category.href,
-            imageLabel: imageLabel(
-              category.image.filename,
-              category.image.description,
-            ),
+            imageLabel: category.image.filename,
+            imageDescription: category.image.description,
           }))}
         />
       </SectionBlock>
@@ -109,7 +108,8 @@ export default function HomePage() {
           </div>
           <ImagePlaceholder
             aspectRatio="4/3"
-            label={imageLabel(
+            variant="compact"
+            {...placeholderImage(
               homeHowWeSelect.image.filename,
               homeHowWeSelect.image.description,
             )}
@@ -123,35 +123,35 @@ export default function HomePage() {
         id="built-for-serious-small-shops"
       >
         <div className="space-y-(--spacing-stack-xl)">
-          <div className="grid gap-(--spacing-stack-xl) lg:grid-cols-2 lg:items-start">
-            <div className="space-y-(--spacing-stack-md)">
-              {homeBuiltForShops.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="text-body text-muted">
-                  {paragraph}
-                </p>
-              ))}
-              <p>
-                <TextLink href={homeBuiltForShops.inlineLink.href}>
-                  {homeBuiltForShops.inlineLink.label}
-                </TextLink>
+          <div className="space-y-(--spacing-stack-md)">
+            {homeBuiltForShops.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="text-body text-muted">
+                {paragraph}
               </p>
-            </div>
+            ))}
+            <p>
+              <TextLink href={homeBuiltForShops.inlineLink.href}>
+                {homeBuiltForShops.inlineLink.label}
+              </TextLink>
+            </p>
           </div>
           <div>
             <ImagePlaceholder
               aspectRatio="16/9"
-              label={imageLabel(
+              variant="compact"
+              className="mb-(--spacing-stack-md)"
+              {...placeholderImage(
                 homeBuiltForShops.compositeImage.filename,
                 homeBuiltForShops.compositeImage.description,
               )}
-              className="mb-(--spacing-stack-md)"
             />
             <ul className="grid gap-(--spacing-stack-md) sm:grid-cols-3">
               {homeBuiltForShops.compositeImage.panels.map((panel) => (
                 <li key={panel.filename}>
                   <ImagePlaceholder
                     aspectRatio="4/3"
-                    label={imageLabel(panel.filename, panel.description)}
+                    variant="compact"
+                    {...placeholderImage(panel.filename, panel.description)}
                   />
                 </li>
               ))}
@@ -173,10 +173,8 @@ export default function HomePage() {
               category: preview.category,
               description: preview.description,
               categoryHref: preview.categoryHref,
-              imageLabel: imageLabel(
-                preview.image.filename,
-                preview.image.description,
-              ),
+              imageLabel: preview.image.filename,
+              imageDescription: preview.image.description,
               featuredLabel:
                 "featuredLabel" in preview ? preview.featuredLabel : undefined,
               featuredHref:
@@ -212,7 +210,8 @@ export default function HomePage() {
           </div>
           <ImagePlaceholder
             aspectRatio="4/3"
-            label={imageLabel(
+            variant="compact"
+            {...placeholderImage(
               homeTechnicalSupport.image.filename,
               homeTechnicalSupport.image.description,
             )}
@@ -226,11 +225,11 @@ export default function HomePage() {
         copy={homeFinalCta.copy}
         primaryCta={homeFinalCta.primaryCta}
         secondaryCta={homeFinalCta.secondaryCta}
-        imageLabel={imageLabel(
+        imageLabel={placeholderImage(
           homeFinalCta.image.filename,
           homeFinalCta.image.description,
         )}
       />
-    </>
+    </div>
   );
 }

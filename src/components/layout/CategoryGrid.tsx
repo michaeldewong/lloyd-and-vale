@@ -7,6 +7,7 @@ export type CategoryGridItem = {
   description: string;
   href: string;
   imageLabel: string;
+  imageDescription: string;
 };
 
 type CategoryGridProps = {
@@ -37,7 +38,9 @@ export function CategoryGrid({ items, className }: CategoryGridProps) {
           >
             <ImagePlaceholder
               aspectRatio="4/3"
+              variant="compact"
               label={item.imageLabel}
+              description={item.imageDescription}
               className="rounded-none border-0 border-b border-border"
             />
             <div className="flex flex-1 flex-col gap-(--spacing-stack-md) p-(--spacing-content)">

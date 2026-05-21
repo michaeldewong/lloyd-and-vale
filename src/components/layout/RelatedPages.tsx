@@ -7,6 +7,7 @@ export type RelatedPageItem = {
   description: string;
   categoryHref: string;
   imageLabel: string;
+  imageDescription: string;
   featuredLabel?: string;
   featuredHref?: string;
   upcoming?: string;
@@ -31,7 +32,9 @@ export function RelatedPages({ items, className }: RelatedPagesProps) {
             <Link href={item.categoryHref} className="group block">
               <ImagePlaceholder
                 aspectRatio="4/3"
+                variant="compact"
                 label={item.imageLabel}
+                description={item.imageDescription}
                 className="rounded-none border-0 border-b border-border"
               />
               <div className="space-y-(--spacing-stack-md) p-(--spacing-content)">

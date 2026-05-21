@@ -2,10 +2,15 @@ import { cn } from "@/lib/cn";
 
 type AspectRatio = "16/9" | "4/3" | "3/2" | "1/1";
 
+type ImagePlaceholderVariant = "default" | "compact" | "background";
+
 type ImagePlaceholderProps = {
   aspectRatio?: AspectRatio;
-  /** Neutral label for layout review — not marketing copy. */
+  /** Short visible caption — typically the filename. */
   label?: string;
+  /** Full photography brief — exposed to assistive tech only. */
+  description?: string;
+  variant?: ImagePlaceholderVariant;
   className?: string;
 };
 
@@ -16,11 +21,21 @@ const aspectStyles: Record<AspectRatio, string> = {
   "1/1": "aspect-square",
 };
 
+const variantStyles: Record<ImagePlaceholderVariant, string> = {
+  default: "max-h-64 md:max-h-72",
+  compact: "max-h-48 md:max-h-56",
+  background: "h-28 max-h-28 md:h-32 md:max-h-32",
+};
+
 export function ImagePlaceholder({
   aspectRatio = "16/9",
   label = "Media placement",
+  description,
+  variant = "default",
   className,
 }: ImagePlaceholderProps) {
+  const ariaLabel = description ? `${label}. ${description}` : label;
+
   return (
     <figure
       className={cn(
@@ -30,13 +45,14 @@ export function ImagePlaceholder({
     >
       <div
         className={cn(
-          "flex w-full items-center justify-center",
-          aspectStyles[aspectRatio],
+          "flex w-full items-center justify-center p-3",
+          variant !== "background" && aspectStyles[aspectRatio],
+          variantStyles[variant],
         )}
         role="img"
-        aria-label={label}
+        aria-label={ariaLabel}
       >
-        <span className="text-caption font-medium tracking-wide text-muted-subtle uppercase">
+        <span className="line-clamp-2 max-w-full text-center text-caption font-medium text-muted-subtle">
           {label}
         </span>
       </div>
