@@ -10,16 +10,29 @@ export type CategoryGridItem = {
   imageDescription: string;
 };
 
+type CategoryGridLayout = "five" | "six";
+
 type CategoryGridProps = {
   items: readonly CategoryGridItem[];
+  layout?: CategoryGridLayout;
   className?: string;
 };
 
-export function CategoryGrid({ items, className }: CategoryGridProps) {
+const layoutGridStyles: Record<CategoryGridLayout, string> = {
+  five: "sm:grid-cols-2 lg:grid-cols-6",
+  six: "sm:grid-cols-2 lg:grid-cols-3",
+};
+
+export function CategoryGrid({
+  items,
+  layout = "five",
+  className,
+}: CategoryGridProps) {
   return (
     <ul
       className={cn(
-        "grid gap-(--spacing-content-lg) sm:grid-cols-2 lg:grid-cols-6",
+        "grid gap-(--spacing-content-lg)",
+        layoutGridStyles[layout],
         className,
       )}
     >
@@ -27,9 +40,9 @@ export function CategoryGrid({ items, className }: CategoryGridProps) {
         <li
           key={item.href}
           className={cn(
-            "sm:col-span-1 lg:col-span-2",
-            index === 3 && "lg:col-span-3",
-            index === 4 && "lg:col-span-3",
+            layout === "five" && "sm:col-span-1 lg:col-span-2",
+            layout === "five" && index === 3 && "lg:col-span-3",
+            layout === "five" && index === 4 && "lg:col-span-3",
           )}
         >
           <Link
