@@ -1,26 +1,108 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f7f4;
+  --foreground: #1a1a18;
+  --muted: #5e5e58;
+  --muted-subtle: #8a8a82;
+  --surface: #ffffff;
+  --surface-muted: #f0efeb;
+  --border: #d9d7d0;
+  --border-strong: #c4c2ba;
+  --accent: #2e3a45;
+  --accent-muted: #4a5c6b;
+  --focus-ring: #2e3a45;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-muted: var(--muted);
+  --color-muted-subtle: var(--muted-subtle);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-muted: var(--accent-muted);
+
+  --font-sans: var(--font-source-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Spacing scale — section rhythm */
+  --spacing-section-sm: 3rem;
+  --spacing-section: 4.5rem;
+  --spacing-section-lg: 6rem;
+  --spacing-content: 1.5rem;
+  --spacing-content-lg: 2rem;
+  --spacing-stack-sm: 0.75rem;
+  --spacing-stack: 1rem;
+  --spacing-stack-md: 1.5rem;
+  --spacing-stack-lg: 2rem;
+  --spacing-stack-xl: 3rem;
+
+  /* Typography scale */
+  --text-display: 2.25rem;
+  --text-display--line-height: 1.15;
+  --text-display--letter-spacing: -0.02em;
+  --text-heading: 1.5rem;
+  --text-heading--line-height: 1.25;
+  --text-heading--letter-spacing: -0.015em;
+  --text-body: 1rem;
+  --text-body--line-height: 1.65;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.5;
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.45;
+
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--foreground);
+  }
+
+  a {
+    text-underline-offset: 0.15em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility text-body {
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+}
+
+@utility text-small {
+  font-size: var(--text-small);
+  line-height: var(--text-small--line-height);
+}
+
+@utility text-caption {
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
 }

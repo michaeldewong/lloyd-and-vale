@@ -1,23 +1,30 @@
 import type { ReactNode } from "react";
-import { Container } from "@/components/layout/Container";
+import { PageHero } from "@/components/layout/PageHero";
+import { Section } from "@/components/layout/Section";
 
 type PageShellProps = {
   title: string;
+  eyebrow?: string;
+  lead?: ReactNode;
   children?: ReactNode;
 };
 
 /**
- * Minimal page wrapper for Gate 1 — title only until page content is authored.
+ * Gate 1 page scaffold — hero title plus optional section content.
  */
-export function PageShell({ title, children }: PageShellProps) {
+export function PageShell({ title, eyebrow, lead, children }: PageShellProps) {
   return (
-    <main className="flex-1 py-12">
-      <Container>
-        <h1 className="text-2xl font-medium tracking-tight text-foreground">
-          {title}
-        </h1>
-        {children ? <div className="mt-8">{children}</div> : null}
-      </Container>
-    </main>
+    <>
+      <PageHero title={title} eyebrow={eyebrow} lead={lead} />
+      {children ? (
+        <Section spacing="default">
+          <div className="space-y-(--spacing-stack-xl)">{children}</div>
+        </Section>
+      ) : (
+        <Section spacing="sm" tone="default">
+          <div className="min-h-[12rem]" aria-hidden="true" />
+        </Section>
+      )}
+    </>
   );
 }
