@@ -10,7 +10,7 @@ export type CategoryGridItem = {
   imageDescription: string;
 };
 
-type CategoryGridLayout = "five" | "six";
+type CategoryGridLayout = "five" | "six" | "eight";
 
 type CategoryGridProps = {
   items: readonly CategoryGridItem[];
@@ -21,6 +21,7 @@ type CategoryGridProps = {
 const layoutGridStyles: Record<CategoryGridLayout, string> = {
   five: "sm:grid-cols-2 lg:grid-cols-6",
   six: "sm:grid-cols-2 lg:grid-cols-3",
+  eight: "sm:grid-cols-2 lg:grid-cols-4",
 };
 
 export function CategoryGrid({
