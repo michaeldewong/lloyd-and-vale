@@ -3,6 +3,7 @@ import { cn } from "@/lib/cn";
 import { Container } from "@/components/layout/Container";
 
 export type TrustStripItem = {
+  /** Full statement text when used without detail */
   label: string;
   detail?: ReactNode;
 };
@@ -36,14 +37,20 @@ export function TrustStrip({ items, className }: TrustStripProps) {
               key={item.label}
               className="border-border sm:border-r sm:pr-(--spacing-content-lg) sm:last:border-r-0"
             >
-              <p className="text-caption font-medium tracking-wide text-muted uppercase">
-                {item.label}
-              </p>
               {item.detail ? (
-                <div className="mt-(--spacing-stack-sm) text-small text-foreground">
-                  {item.detail}
-                </div>
-              ) : null}
+                <>
+                  <p className="text-caption font-medium tracking-wide text-muted uppercase">
+                    {item.label}
+                  </p>
+                  <div className="mt-(--spacing-stack-sm) text-small text-foreground">
+                    {item.detail}
+                  </div>
+                </>
+              ) : (
+                <p className="text-small leading-relaxed text-foreground">
+                  {item.label}
+                </p>
+              )}
             </li>
           ))}
         </ul>
