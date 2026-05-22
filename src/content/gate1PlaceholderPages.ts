@@ -41,6 +41,31 @@ export const starterKitsPage = {
   ],
 } as const;
 
+export const dtfShopSetupKitPage = {
+  eyebrow: "Shop / Starter Kits / DTF Shop Setup Kit",
+  title: "DTF Shop Setup Kit",
+} as const;
+
+export const embroideryShopSetupKitPage = {
+  eyebrow: "Shop / Starter Kits / Embroidery Shop Setup Kit",
+  title: "Embroidery Shop Setup Kit",
+} as const;
+
+export const etsyShopifyProductionKitPage = {
+  eyebrow: "Shop / Starter Kits / Etsy / Shopify Production Kit",
+  title: "Etsy / Shopify Production Kit",
+} as const;
+
+export const qcStationSetupKitPage = {
+  eyebrow: "Shop / Starter Kits / QC Station Setup Kit",
+  title: "QC Station Setup Kit",
+} as const;
+
+export const fiveSStarterKitPage = {
+  eyebrow: "Shop / Starter Kits / 5S Starter Kit",
+  title: "5S Starter Kit",
+} as const;
+
 export const guidesAndChecklistsPage = {
   eyebrow: "Learn / Guides & Checklists",
   title: "Guides & Checklists",
