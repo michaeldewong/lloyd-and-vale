@@ -3,6 +3,8 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 import { MainNav } from "@/components/layout/MainNav";
+import { ButtonLink } from "@/components/ui/Button";
+import { headerGetAQuoteCta } from "@/content/navigation";
 import { cn } from "@/lib/cn";
 
 export function MobileNav() {
@@ -51,8 +53,17 @@ export function MobileNav() {
           id={panelId}
           className="absolute inset-x-0 top-full z-40 border-b border-border bg-surface shadow-sm"
         >
-          <div className="px-5 py-4 sm:px-8">
+          <div className="space-y-4 px-5 py-4 sm:px-8">
             <MainNav onNavigate={() => setOpen(false)} />
+            <ButtonLink
+              href={headerGetAQuoteCta.href}
+              variant="primary"
+              size="md"
+              className="w-full justify-center"
+              onClick={() => setOpen(false)}
+            >
+              {headerGetAQuoteCta.label}
+            </ButtonLink>
           </div>
         </div>
       ) : null}

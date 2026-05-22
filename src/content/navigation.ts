@@ -20,6 +20,12 @@ export const primaryNavigation: readonly NavItem[] = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
+/** Site-wide header CTA — separate from primary navigation. */
+export const headerGetAQuoteCta = {
+  label: "Get a Quote",
+  href: "/get-a-quote",
+} as const;
+
 export const shopChildNavigation: readonly NavItem[] = [
   {
     label: "Shop Setup Essentials",
