@@ -1,6 +1,8 @@
 import { cn } from "@/lib/cn";
 
-type AspectRatio = "16/9" | "4/3" | "3/2" | "1/1";
+export type ImagePlaceholderAspectRatio = "16/9" | "4/3" | "3/2" | "1/1";
+
+type AspectRatio = ImagePlaceholderAspectRatio;
 
 type ImagePlaceholderVariant = "default" | "compact" | "background";
 
