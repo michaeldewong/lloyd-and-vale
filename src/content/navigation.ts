@@ -45,24 +45,63 @@ export const learnChildNavigation: readonly NavItem[] = [
   },
 ] as const;
 
-/**
- * Footer: same main pages as primary nav, plus approved child / utility links.
- * "Technical Support" links to /support (no separate /technical-support route).
- */
-export const footerNavigation = {
-  main: primaryNavigation,
-  links: [
-    ...shopChildNavigation,
-    {
-      label: "Operator Note #1",
-      href: "/learn/reducing-dtf-reprints-workflow-layout-case",
-    },
-    { label: "Technical Support", href: "/support" },
-    { label: "Contact", href: "/contact" },
-  ],
-} as const;
+export type FooterColumn = {
+  title: string;
+  links: readonly NavItem[];
+};
 
-/** Secondary legal links beneath the main footer columns. */
+/** Gate 1 site-wide footer — column titles and link targets only. */
+export const gate1FooterColumns: readonly FooterColumn[] = [
+  {
+    title: "Industries",
+    links: [
+      { label: "DTF Shops", href: "/industries/dtf-shops" },
+      { label: "Embroidery Shops", href: "/industries/embroidery-shops" },
+      {
+        label: "Etsy / Shopify Sellers",
+        href: "/industries/etsy-shopify-sellers",
+      },
+      {
+        label: "Promotional Decorators",
+        href: "/industries/promotional-decorators",
+      },
+    ],
+  },
+  {
+    title: "Standards & Selection",
+    links: [
+      {
+        label: "Selection Standards",
+        href: "/about/selection-standards",
+      },
+      { label: "Product Evaluation", href: "/about/product-evaluation" },
+      {
+        label: "Why Selection Matters",
+        href: "/about/why-selection-matters",
+      },
+    ],
+  },
+  {
+    title: "Content",
+    links: [
+      { label: "Operator Notes", href: "/learn/operator-notes" },
+      { label: "Field Reports", href: "/learn/field-reports" },
+      { label: "Supplier Notes", href: "/learn/supplier-notes" },
+      { label: "Blog", href: "/learn/blog" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
+      { label: "Get a Quote", href: "/get-a-quote" },
+      { label: "Support", href: "/support" },
+    ],
+  },
+] as const;
+
+/** Legal sub-footer beneath the main footer columns. */
 export const legalFooterLinks = [
   { label: "Privacy Policy", href: "/privacy-policy" },
 ] as const;
