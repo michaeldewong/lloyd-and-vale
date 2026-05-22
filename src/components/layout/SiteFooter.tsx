@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { footerNavigation, siteName } from "@/content/navigation";
+import { footerNavigation, legalFooterLinks, siteName } from "@/content/navigation";
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/cn";
 
@@ -68,7 +68,18 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        <div className="mt-(--spacing-section-sm) border-t border-border pt-(--spacing-content-lg)">
+        <div className="mt-(--spacing-section-sm) space-y-(--spacing-stack-md) border-t border-border pt-(--spacing-content-lg)">
+          <nav aria-label="Legal">
+            <ul className="flex flex-wrap gap-x-6 gap-y-2">
+              {legalFooterLinks.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className={linkClassName}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <p className="text-caption text-muted-subtle">
             &copy; {new Date().getFullYear()} {siteName}
           </p>

@@ -56,6 +56,11 @@ export const footerNavigation = {
   ],
 } as const;
 
+/** Secondary legal links beneath the main footer columns. */
+export const legalFooterLinks = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+] as const;
+
 /** Page titles for layout shells — labels only, no marketing copy. */
 export const pageTitles = {
   home: "Home",
