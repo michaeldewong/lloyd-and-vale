@@ -1,9 +1,18 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/layout/PageHero";
 import { Section } from "@/components/layout/Section";
 import { ImagePlaceholder } from "@/components/media/ImagePlaceholder";
 import { learnPage } from "@/content/learn";
 import { cn } from "@/lib/cn";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  pageName: learnPage.title,
+  description:
+    "Operator-facing learning resources including Operator Notes, Field Reports, practical guides, checklists, and training-focused content routes.",
+  path: "/learn",
+});
 
 type LearnSubsection =
   | (typeof learnPage.subsections)[0]

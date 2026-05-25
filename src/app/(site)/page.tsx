@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { CategoryGrid } from "@/components/layout/CategoryGrid";
 import { CTASection } from "@/components/layout/CTASection";
 import { Container } from "@/components/layout/Container";
@@ -17,6 +18,14 @@ import {
   homeTechnicalSupport,
   homeTrustStrip,
 } from "@/content/home";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  pageName: "Home",
+  description:
+    "Operator-facing equipment, consumables, shop setup essentials, shop control tools, and technical support for serious small production shops.",
+  path: "/",
+});
 
 function placeholderImage(filename: string, description: string) {
   return { label: filename, description };

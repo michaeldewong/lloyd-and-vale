@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import { PageHero } from "@/components/layout/PageHero";
 import { Section } from "@/components/layout/Section";
 import { contactPage } from "@/content/contact";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  pageName: contactPage.title,
+  description:
+    "Contact Lloyd & Vale by email at support@lloydvale.com. Operational responses are handled within one business day.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

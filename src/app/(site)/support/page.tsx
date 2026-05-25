@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { CTASection } from "@/components/layout/CTASection";
 import { Container } from "@/components/layout/Container";
 import { RelatedPages } from "@/components/layout/RelatedPages";
@@ -15,6 +16,14 @@ import {
   technicalSupportRelated,
   technicalSupportSubmit,
 } from "@/content/technicalSupport";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  pageName: "Technical Support",
+  description:
+    "Technical support for products and workflows inside documented Lloyd & Vale scope, with clear intake, response standards, and escalation paths.",
+  path: "/support",
+});
 
 function ProseParagraphs({ paragraphs }: { paragraphs: readonly string[] }) {
   return (

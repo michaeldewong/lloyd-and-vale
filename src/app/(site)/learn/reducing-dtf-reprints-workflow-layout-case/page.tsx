@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArticleHero } from "@/components/article/ArticleHero";
 import { ArticleLayout } from "@/components/article/ArticleLayout";
 import { ArticleSection } from "@/components/article/ArticleSection";
@@ -6,6 +7,14 @@ import { CaseNote } from "@/components/article/CaseNote";
 import { InlineArticleLink } from "@/components/article/InlineArticleLink";
 import { Container } from "@/components/layout/Container";
 import { operatorNote1 } from "@/content/operatorNoteReducingDtfReprints";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  pageName: operatorNote1.title,
+  description:
+    "Operator Note case study on reducing DTF reprints through workflow layout changes, visible standards, and measurable control points.",
+  path: "/learn/reducing-dtf-reprints-workflow-layout-case",
+});
 
 function ProseParagraphs({ paragraphs }: { paragraphs: readonly string[] }) {
   return (

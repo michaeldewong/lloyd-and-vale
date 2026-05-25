@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { CategoryGrid } from "@/components/layout/CategoryGrid";
 import { CTASection } from "@/components/layout/CTASection";
 import { Container } from "@/components/layout/Container";
@@ -16,6 +17,14 @@ import {
   consumablesSelection,
   consumablesWhy,
 } from "@/content/consumables";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  pageName: "Consumables",
+  description:
+    "Consumables organized by production impact, with Gate 1 catalog categories and evaluation-governed production-sensitive consumables.",
+  path: "/shop/consumables",
+});
 function mapGridItem(item: {
   title: string;
   description: string;

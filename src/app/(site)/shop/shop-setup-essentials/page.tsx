@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { CategoryGrid } from "@/components/layout/CategoryGrid";
 import { CTASection } from "@/components/layout/CTASection";
 import { Container } from "@/components/layout/Container";
@@ -16,6 +17,14 @@ import {
   shopSetupEssentialsSubcategories,
   shopSetupEssentialsWhy,
 } from "@/content/shopSetupEssentials";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  pageName: "Shop Setup Essentials",
+  description:
+    "Visual-management infrastructure for small production shops, including floor marking, zone labels, station signs, SOP boards, and setup kits.",
+  path: "/shop/shop-setup-essentials",
+});
 
 function mapGridItem(item: {
   title: string;

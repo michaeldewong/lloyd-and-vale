@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { CategoryGrid } from "@/components/layout/CategoryGrid";
 import { CTASection } from "@/components/layout/CTASection";
 import { Container } from "@/components/layout/Container";
@@ -15,6 +16,14 @@ import {
   shopControlToolsSelection,
   shopControlToolsWhy,
 } from "@/content/shopControlTools";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  pageName: "Shop Control Tools",
+  description:
+    "Tools that make production measurable: measuring, alignment, weighing, storage, QC, and heat press support for repeatable shop workflows.",
+  path: "/shop/shop-control-tools",
+});
 
 function mapGridItem(item: {
   title: string;

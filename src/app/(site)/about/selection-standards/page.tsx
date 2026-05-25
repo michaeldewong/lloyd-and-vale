@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import { PageHero } from "@/components/layout/PageHero";
 import { TextLink } from "@/components/layout/TextLink";
 import { Container } from "@/components/layout/Container";
 import { selectionStandards } from "@/content/selectionStandards";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  pageName: selectionStandards.title,
+  description:
+    "Selection standards used by Lloyd & Vale to evaluate products, document operating limits, and support reliable small-shop production.",
+  path: "/about/selection-standards",
+});
 
 export default function SelectionStandardsPage() {
   const page = selectionStandards;

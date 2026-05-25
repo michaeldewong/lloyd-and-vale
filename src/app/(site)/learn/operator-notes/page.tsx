@@ -1,8 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/layout/PageHero";
 import { Section } from "@/components/layout/Section";
 import { ImagePlaceholder } from "@/components/media/ImagePlaceholder";
 import { operatorNotesPage } from "@/content/operatorNotes";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  pageName: operatorNotesPage.title,
+  description:
+    "Operator Notes from real production work, documenting workflow changes, evaluation outcomes, and practical decisions from operating shops.",
+  path: "/learn/operator-notes",
+});
 
 export default function OperatorNotesPage() {
   const page = operatorNotesPage;

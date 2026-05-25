@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/layout/PageHero";
 import { Section } from "@/components/layout/Section";
 import { eventsPage } from "@/content/events";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  pageName: eventsPage.title,
+  description:
+    "Events at Lloyd & Vale, including trade shows, open houses, field visits, and roundtables linked from the Gate 1 navigation structure.",
+  path: "/events",
+});
 
 function EventsSubsectionBlocks() {
   return (

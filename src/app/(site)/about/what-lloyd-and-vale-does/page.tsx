@@ -1,8 +1,17 @@
+import type { Metadata } from "next";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionBlock } from "@/components/layout/SectionBlock";
 import { TextLink } from "@/components/layout/TextLink";
 import { Container } from "@/components/layout/Container";
 import { whatLloydAndValeDoes } from "@/content/whatLloydAndValeDoes";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  pageName: whatLloydAndValeDoes.title,
+  description:
+    "What Lloyd & Vale does across equipment, consumables, setup infrastructure, control tools, and technical support for production operators.",
+  path: "/about/what-lloyd-and-vale-does",
+});
 
 function ProseParagraphs({ paragraphs }: { paragraphs: readonly string[] }) {
   return (

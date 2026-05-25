@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/layout/PageHero";
 import { Section } from "@/components/layout/Section";
 import { aboutPage } from "@/content/about";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  pageName: aboutPage.title,
+  description:
+    "About Lloyd & Vale: scope, who we serve, and selection standards for equipment, consumables, setup tools, and technical support.",
+  path: "/about",
+});
 
 function AboutSubsectionBlocks() {
   return (

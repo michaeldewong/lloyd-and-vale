@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import { PageHero } from "@/components/layout/PageHero";
 import { Section } from "@/components/layout/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { privacyPolicyPage } from "@/content/privacyPolicy";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  pageName: privacyPolicyPage.title,
+  description:
+    "Privacy Policy for Lloyd & Vale covering how inquiry information is handled for contact, quote, and technical support workflows.",
+  path: "/privacy-policy",
+});
 
 export default function PrivacyPolicyPage() {
   const page = privacyPolicyPage;
