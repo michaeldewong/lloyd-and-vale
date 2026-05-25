@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FormLayout } from "@/components/forms/FormLayout";
+import { HoneypotField } from "@/components/forms/HoneypotField";
 import {
   fieldErrorClass,
   fieldInputClass,
@@ -10,9 +11,12 @@ import {
 import { TextLink } from "@/components/layout/TextLink";
 import { Button } from "@/components/ui/Button";
 import {
+  getAQuoteConfirmationEmail,
   getAQuoteFormSections,
   getAQuotePage,
 } from "@/content/getAQuote";
+import { FORM_HONEYPOT_FIELDS } from "@/lib/forms/honeypot";
+import { FORM_ENDPOINTS, submitFormPayload } from "@/lib/forms/submitClient";
 
 type FormState = {
   fullName: string;
@@ -64,6 +68,9 @@ function isValidEmail(value: string): boolean {
 export function GetAQuoteForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<Partial<Record<string, string>>>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const { validation } = getAQuotePage;
   const sections = getAQuoteFormSections;
@@ -75,6 +82,7 @@ export function GetAQuoteForm() {
       delete next[key as string];
       return next;
     });
+    setSubmitError(null);
   }
 
   function validate(): Partial<Record<string, string>> {
@@ -104,7 +112,7 @@ export function GetAQuoteForm() {
     return next;
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const nextErrors = validate();
     setErrors(nextErrors);
@@ -113,7 +121,43 @@ export function GetAQuoteForm() {
       return;
     }
 
-    // TODO: Wire to approved backend submission, CRM routing, and automated confirmation email before launch.
+    const formData = new FormData(event.currentTarget);
+    const honeypot = formData.get(FORM_HONEYPOT_FIELDS.quote)?.toString() ?? "";
+    const lookingFor = sections.lookingFor.interests.options.filter(
+      (option) => form.lookingFor[option],
+    );
+
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const result = await submitFormPayload(FORM_ENDPOINTS.quote, {
+      fullName: form.fullName,
+      businessName: form.businessName,
+      email: form.email,
+      phone: form.phone,
+      cityState: form.cityState,
+      websiteUrl: form.websiteUrl,
+      businessType: form.businessType,
+      shopSize: form.shopSize,
+      productionDuration: form.productionDuration,
+      lookingFor,
+      solvingSpecifying: form.solvingSpecifying,
+      budgetRange: form.budgetRange,
+      timeline: form.timeline,
+      contactMethod: form.contactMethod,
+      anythingElse: form.anythingElse,
+      [FORM_HONEYPOT_FIELDS.quote]: honeypot,
+      sourceUrl: window.location.href,
+    });
+
+    setSubmitting(false);
+
+    if (!result.ok) {
+      setSubmitError(result.error);
+      return;
+    }
+
+    setSubmitted(true);
   }
 
   function renderError(field: string) {
@@ -123,12 +167,21 @@ export function GetAQuoteForm() {
 
   const aboutYou = sections.aboutYou.fields;
 
+  if (submitted) {
+    return (
+      <p className="text-body text-muted">
+        {getAQuoteConfirmationEmail.bodyParagraphs[0]}
+      </p>
+    );
+  }
+
   return (
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="space-y-(--spacing-section)"
+      className="relative space-y-(--spacing-section)"
     >
+      <HoneypotField name={FORM_HONEYPOT_FIELDS.quote} />
       <FormLayout title={sections.aboutYou.title}>
         <div>
           <label htmlFor="fullName" className={fieldLabelClass}>
@@ -430,8 +483,14 @@ export function GetAQuoteForm() {
         {getAQuotePage.consent.after}
       </p>
 
-      <Button type="submit" variant="primary" size="lg">
-        {getAQuotePage.submitLabel}
+      {submitError ? (
+        <p className={fieldErrorClass} role="alert">
+          {submitError}
+        </p>
+      ) : null}
+
+      <Button type="submit" variant="primary" size="lg" disabled={submitting}>
+        {submitting ? "Submitting…" : getAQuotePage.submitLabel}
       </Button>
     </form>
   );

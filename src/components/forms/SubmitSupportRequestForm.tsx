@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FileUploadField } from "@/components/forms/FileUploadField";
 import { FormLayout } from "@/components/forms/FormLayout";
+import { HoneypotField } from "@/components/forms/HoneypotField";
 import {
   fieldErrorClass,
   fieldInputClass,
@@ -14,6 +15,8 @@ import {
   submitSupportRequestFormSections,
   submitSupportRequestPage,
 } from "@/content/submitSupportRequest";
+import { FORM_HONEYPOT_FIELDS } from "@/lib/forms/honeypot";
+import { FORM_ENDPOINTS, submitFormPayload } from "@/lib/forms/submitClient";
 
 type FormState = {
   fullName: string;
@@ -55,6 +58,8 @@ export function SubmitSupportRequestForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [attachments, setAttachments] = useState<File[]>([]);
   const [errors, setErrors] = useState<Partial<Record<string, string>>>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const page = submitSupportRequestPage;
@@ -67,6 +72,7 @@ export function SubmitSupportRequestForm() {
       delete next[key as string];
       return next;
     });
+    setSubmitError(null);
   }
 
   function validate(): Partial<Record<string, string>> {
@@ -87,7 +93,7 @@ export function SubmitSupportRequestForm() {
     return next;
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const nextErrors = validate();
     setErrors(nextErrors);
@@ -96,8 +102,38 @@ export function SubmitSupportRequestForm() {
       return;
     }
 
-    // TODO: Wire to approved backend submission, file storage, and automated confirmation email before launch.
-    // Attachments selected in browser only; not uploaded until backend infrastructure exists.
+    const formData = new FormData(event.currentTarget);
+    const honeypot =
+      formData.get(FORM_HONEYPOT_FIELDS.support)?.toString() ?? "";
+
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const result = await submitFormPayload(FORM_ENDPOINTS.support, {
+      fullName: form.fullName,
+      businessName: form.businessName,
+      email: form.email,
+      phone: form.phone,
+      orderNumber: form.orderNumber,
+      productSku: form.productSku,
+      starterKitName: form.starterKitName,
+      equipment: form.equipment,
+      consumables: form.consumables,
+      observing: form.observing,
+      productionContext: form.productionContext,
+      alreadyTried: form.alreadyTried,
+      contactMethod: form.contactMethod,
+      [FORM_HONEYPOT_FIELDS.support]: honeypot,
+      sourceUrl: window.location.href,
+    });
+
+    setSubmitting(false);
+
+    if (!result.ok) {
+      setSubmitError(result.error);
+      return;
+    }
+
     setSubmitted(true);
   }
 
@@ -120,8 +156,9 @@ export function SubmitSupportRequestForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="space-y-(--spacing-section)"
+      className="relative space-y-(--spacing-section)"
     >
+      <HoneypotField name={FORM_HONEYPOT_FIELDS.support} />
       <FormLayout title={sections.aboutRequest.title}>
         <div>
           <label htmlFor="fullName" className={fieldLabelClass}>
@@ -352,8 +389,14 @@ export function SubmitSupportRequestForm() {
         {page.consent.after}
       </p>
 
-      <Button type="submit" variant="primary" size="lg">
-        {page.submitLabel}
+      {submitError ? (
+        <p className={fieldErrorClass} role="alert">
+          {submitError}
+        </p>
+      ) : null}
+
+      <Button type="submit" variant="primary" size="lg" disabled={submitting}>
+        {submitting ? "Submitting…" : page.submitLabel}
       </Button>
     </form>
   );
