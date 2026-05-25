@@ -39,6 +39,8 @@ const staticRoutes = [
   "/contact",
   "/get-a-quote",
   "/privacy-policy",
+  "/terms-of-use",
+  "/accessibility-statement",
 ] as const;
 
 function expandChildRoutes(prefix: string, slugs: readonly string[]) {

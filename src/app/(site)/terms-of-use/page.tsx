@@ -3,14 +3,14 @@ import { PolicyDocumentPage } from "@/components/policy/PolicyDocumentPage";
 import { getPolicyDocument } from "@/lib/policies/documents";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
-const privacyPolicy = getPolicyDocument("privacy-policy");
+const termsOfUsePolicy = getPolicyDocument("terms-of-use");
 
 export const metadata: Metadata = buildPageMetadata({
-  pageName: privacyPolicy.title,
-  description: privacyPolicy.metaDescription,
-  path: "/privacy-policy",
+  pageName: termsOfUsePolicy.title,
+  description: termsOfUsePolicy.metaDescription,
+  path: "/terms-of-use",
 });
 
-export default function PrivacyPolicyPage() {
-  return <PolicyDocumentPage policy={privacyPolicy} />;
+export default function TermsOfUsePage() {
+  return <PolicyDocumentPage policy={termsOfUsePolicy} />;
 }

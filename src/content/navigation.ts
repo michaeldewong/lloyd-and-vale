@@ -104,6 +104,8 @@ export const gate1FooterColumns: readonly FooterColumn[] = [
 /** Legal sub-footer beneath the main footer columns. */
 export const legalFooterLinks = [
   { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Use", href: "/terms-of-use" },
+  { label: "Accessibility Statement", href: "/accessibility-statement" },
 ] as const;
 
 /** Page titles for layout shells — labels only, no marketing copy. */
