@@ -5,8 +5,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: roundtablesAndSummitsPage.title,
-  description:
-    "Roundtables & Summits route within Lloyd & Vale Events, keeping the Gate 1 event index factual, restrained, and route-complete.",
+  description: roundtablesAndSummitsPage.title,
   path: "/events/roundtables-and-summits",
 });
 

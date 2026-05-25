@@ -11,8 +11,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: operatorNote1.title,
-  description:
-    "Operator Note case study on reducing DTF reprints through workflow layout changes, visible standards, and measurable control points.",
+  description: operatorNote1.deck,
   path: "/learn/reducing-dtf-reprints-workflow-layout-case",
 });
 

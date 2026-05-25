@@ -5,8 +5,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: whoWeServePage.title,
-  description:
-    "Who Lloyd & Vale serves across small production shops, decorators, and operators. Gate 1 page structure with core route visibility.",
+  description: whoWeServePage.title,
   path: "/about/who-we-serve",
 });
 

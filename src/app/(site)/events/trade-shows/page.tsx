@@ -5,8 +5,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: tradeShowsPage.title,
-  description:
-    "Trade Shows route within Lloyd & Vale Events, providing a clean Gate 1 page path for event-linked operator and sourcing contexts.",
+  description: tradeShowsPage.title,
   path: "/events/trade-shows",
 });
 

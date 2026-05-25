@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Source_Sans_3 } from "next/font/google";
+import { homeHero } from "@/content/home";
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo/metadata";
 import "./globals.css";
 
@@ -21,14 +22,12 @@ export const metadata: Metadata = {
     default: `Home — ${SITE_NAME}`,
     template: "%s",
   },
-  description:
-    "Operator-facing equipment, consumables, shop setup essentials, shop control tools, and technical support for serious small production shops.",
+  description: homeHero.subheadline,
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
     title: `Home — ${SITE_NAME}`,
-    description:
-      "Operator-facing equipment, consumables, shop setup essentials, shop control tools, and technical support for serious small production shops.",
+    description: homeHero.subheadline,
     url: SITE_URL,
     images: [
       {
@@ -42,8 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `Home — ${SITE_NAME}`,
-    description:
-      "Operator-facing equipment, consumables, shop setup essentials, shop control tools, and technical support for serious small production shops.",
+    description: homeHero.subheadline,
     images: [DEFAULT_OG_IMAGE],
   },
   icons: {

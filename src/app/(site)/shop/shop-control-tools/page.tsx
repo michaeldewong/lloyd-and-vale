@@ -20,8 +20,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: "Shop Control Tools",
-  description:
-    "Tools that make production measurable: measuring, alignment, weighing, storage, QC, and heat press support for repeatable shop workflows.",
+  description: shopControlToolsHero.subheadline,
   path: "/shop/shop-control-tools",
 });
 

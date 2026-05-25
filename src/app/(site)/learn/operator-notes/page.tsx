@@ -8,8 +8,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: operatorNotesPage.title,
-  description:
-    "Operator Notes from real production work, documenting workflow changes, evaluation outcomes, and practical decisions from operating shops.",
+  description: operatorNotesPage.description,
   path: "/learn/operator-notes",
 });
 

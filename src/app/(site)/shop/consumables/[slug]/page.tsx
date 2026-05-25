@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Gate1Subpage } from "@/components/layout/Gate1Subpage";
 import {
+  consumablesGate1Catalog,
+  consumablesHero,
+  consumablesProductionSensitive,
+} from "@/content/consumables";
+import {
   consumablesChildPages,
   type ConsumablesChildSlug,
 } from "@/content/gate1CategoryChildPages";
@@ -15,21 +20,26 @@ export function generateStaticParams() {
   return Object.keys(consumablesChildPages).map((slug) => ({ slug }));
 }
 
+const consumablesDescriptionBySlug = new Map(
+  [...consumablesGate1Catalog.items, ...consumablesProductionSensitive.items].map(
+    (item) => [item.href.split("/").pop() ?? "", item.description],
+  ),
+);
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const page = consumablesChildPages[slug as ConsumablesChildSlug];
   if (!page) {
     return buildPageMetadata({
       pageName: "Consumables",
-      description:
-        "Consumables route for Lloyd & Vale Gate 1 covering operator-facing consumables categories and production-sensitive material groups.",
+      description: consumablesHero.subheadline,
       path: "/shop/consumables",
     });
   }
 
   return buildPageMetadata({
     pageName: page.title,
-    description: `${page.title} in Lloyd & Vale Consumables for operator-facing Gate 1 routing and category visibility.`,
+    description: consumablesDescriptionBySlug.get(slug) ?? page.title,
     path: `/shop/consumables/${slug}`,
   });
 }

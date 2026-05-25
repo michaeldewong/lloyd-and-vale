@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Gate1Subpage } from "@/components/layout/Gate1Subpage";
+import { shopControlToolsFamilies, shopControlToolsHero } from "@/content/shopControlTools";
 import {
   shopControlToolsChildPages,
   type ShopControlToolsChildSlug,
@@ -15,21 +16,27 @@ export function generateStaticParams() {
   return Object.keys(shopControlToolsChildPages).map((slug) => ({ slug }));
 }
 
+const shopControlToolsDescriptionBySlug = new Map(
+  shopControlToolsFamilies.items.map((item) => [
+    item.href.split("/").pop() ?? "",
+    item.description,
+  ]),
+);
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const page = shopControlToolsChildPages[slug as ShopControlToolsChildSlug];
   if (!page) {
     return buildPageMetadata({
       pageName: "Shop Control Tools",
-      description:
-        "Shop Control Tools route for Lloyd & Vale Gate 1, focused on operator-facing production measurement and control categories.",
+      description: shopControlToolsHero.subheadline,
       path: "/shop/shop-control-tools",
     });
   }
 
   return buildPageMetadata({
     pageName: page.title,
-    description: `${page.title} in Lloyd & Vale Shop Control Tools for operator-facing Gate 1 navigation and route coverage.`,
+    description: shopControlToolsDescriptionBySlug.get(slug) ?? page.title,
     path: `/shop/shop-control-tools/${slug}`,
   });
 }

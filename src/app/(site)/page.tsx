@@ -22,8 +22,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: "Home",
-  description:
-    "Operator-facing equipment, consumables, shop setup essentials, shop control tools, and technical support for serious small production shops.",
+  description: homeHero.subheadline,
   path: "/",
 });
 

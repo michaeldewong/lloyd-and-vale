@@ -5,8 +5,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: dtfShopSetupKitPage.title,
-  description:
-    "DTF Shop Setup Kit route for Lloyd & Vale Gate 1 Starter Kits, maintaining a clear path for structured kit-level specification inquiries.",
+  description: dtfShopSetupKitPage.title,
   path: "/shop/starter-kits/dtf-shop-setup-kit",
 });
 

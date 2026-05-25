@@ -20,8 +20,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: "Technical Support",
-  description:
-    "Technical support for products and workflows inside documented Lloyd & Vale scope, with clear intake, response standards, and escalation paths.",
+  description: technicalSupportHero.subheadline,
   path: "/support",
 });
 

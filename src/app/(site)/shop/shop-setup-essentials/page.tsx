@@ -21,8 +21,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: "Shop Setup Essentials",
-  description:
-    "Visual-management infrastructure for small production shops, including floor marking, zone labels, station signs, SOP boards, and setup kits.",
+  description: shopSetupEssentialsHero.subheadline,
   path: "/shop/shop-setup-essentials",
 });
 

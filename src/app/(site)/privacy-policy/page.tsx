@@ -7,8 +7,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: privacyPolicyPage.title,
-  description:
-    "Privacy Policy for Lloyd & Vale covering how inquiry information is handled for contact, quote, and technical support workflows.",
+  description: privacyPolicyPage.description,
   path: "/privacy-policy",
 });
 

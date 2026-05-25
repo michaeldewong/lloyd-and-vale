@@ -5,8 +5,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: openHousesPage.title,
-  description:
-    "Open Houses route within Lloyd & Vale Events, maintaining a clear Gate 1 event path without promotional overlays or listing language.",
+  description: openHousesPage.title,
   path: "/events/open-houses",
 });
 

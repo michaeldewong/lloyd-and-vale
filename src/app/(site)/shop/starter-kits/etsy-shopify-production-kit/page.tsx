@@ -5,8 +5,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: etsyShopifyProductionKitPage.title,
-  description:
-    "Etsy / Shopify Production Kit route for Lloyd & Vale Gate 1 Starter Kits, preserving a clean path for small-shop production setup requests.",
+  description: etsyShopifyProductionKitPage.title,
   path: "/shop/starter-kits/etsy-shopify-production-kit",
 });
 

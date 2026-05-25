@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Gate1Subpage } from "@/components/layout/Gate1Subpage";
 import {
+  shopSetupEssentialsHero,
+  shopSetupEssentialsSubcategories,
+} from "@/content/shopSetupEssentials";
+import {
   shopSetupEssentialsChildPages,
   type ShopSetupEssentialsChildSlug,
 } from "@/content/gate1CategoryChildPages";
@@ -15,6 +19,12 @@ export function generateStaticParams() {
   return Object.keys(shopSetupEssentialsChildPages).map((slug) => ({ slug }));
 }
 
+const shopSetupDescriptionBySlug = new Map(
+  shopSetupEssentialsSubcategories.items
+    .filter((item) => item.href.startsWith("/shop/shop-setup-essentials/"))
+    .map((item) => [item.href.split("/").pop() ?? "", item.description]),
+);
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const page =
@@ -22,15 +32,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!page) {
     return buildPageMetadata({
       pageName: "Shop Setup Essentials",
-      description:
-        "Shop Setup Essentials route for Lloyd & Vale Gate 1 with operator-facing setup structure and visual-management category access.",
+      description: shopSetupEssentialsHero.subheadline,
       path: "/shop/shop-setup-essentials",
     });
   }
 
   return buildPageMetadata({
     pageName: page.title,
-    description: `${page.title} in Lloyd & Vale Shop Setup Essentials for operator-facing Gate 1 route visibility and navigation.`,
+    description: shopSetupDescriptionBySlug.get(slug) ?? page.title,
     path: `/shop/shop-setup-essentials/${slug}`,
   });
 }

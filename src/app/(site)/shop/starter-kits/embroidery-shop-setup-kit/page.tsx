@@ -5,8 +5,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: embroideryShopSetupKitPage.title,
-  description:
-    "Embroidery Shop Setup Kit route for Lloyd & Vale Gate 1 Starter Kits, retaining a direct path for embroidery workflow setup inquiries.",
+  description: embroideryShopSetupKitPage.title,
   path: "/shop/starter-kits/embroidery-shop-setup-kit",
 });
 

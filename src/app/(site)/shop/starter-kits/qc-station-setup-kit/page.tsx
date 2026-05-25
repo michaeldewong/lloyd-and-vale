@@ -5,8 +5,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: qcStationSetupKitPage.title,
-  description:
-    "QC Station Setup Kit route for Lloyd & Vale Gate 1 Starter Kits, focused on practical quality-control station setup navigation.",
+  description: qcStationSetupKitPage.title,
   path: "/shop/starter-kits/qc-station-setup-kit",
 });
 

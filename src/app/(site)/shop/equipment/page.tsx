@@ -5,8 +5,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: equipmentPage.title,
-  description:
-    "Equipment route for Lloyd & Vale Gate 1. Operator-facing structure for equipment inquiries and scoped specification discussions.",
+  description: equipmentPage.title,
   path: "/shop/equipment",
 });
 

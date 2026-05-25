@@ -8,8 +8,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: whatLloydAndValeDoes.title,
-  description:
-    "What Lloyd & Vale does across equipment, consumables, setup infrastructure, control tools, and technical support for production operators.",
+  description: whatLloydAndValeDoes.subheadline,
   path: "/about/what-lloyd-and-vale-does",
 });
 

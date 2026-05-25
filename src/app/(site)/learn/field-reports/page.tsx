@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Gate1Subpage } from "@/components/layout/Gate1Subpage";
 import { fieldReportsPage } from "@/content/gate1PlaceholderPages";
+import { learnPage } from "@/content/learn";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: fieldReportsPage.title,
-  description:
-    "Field Reports route for Lloyd & Vale Learn. Operator-facing page for observation-based reporting tied to production and sourcing work.",
+  description: learnPage.subsections[1].description,
   path: "/learn/field-reports",
 });
 

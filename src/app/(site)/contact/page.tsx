@@ -6,8 +6,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: contactPage.title,
-  description:
-    "Contact Lloyd & Vale by email at support@lloydvale.com. Operational responses are handled within one business day.",
+  description: contactPage.responseStandard,
   path: "/contact",
 });
 

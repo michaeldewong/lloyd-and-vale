@@ -5,8 +5,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: starterKitsPage.title,
-  description:
-    "Starter Kits route for Lloyd & Vale Gate 1, covering setup-oriented kit paths for DTF, embroidery, QC, and small shop operations.",
+  description: starterKitsPage.title,
   path: "/shop/starter-kits",
 });
 

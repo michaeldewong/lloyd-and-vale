@@ -7,8 +7,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: eventsPage.title,
-  description:
-    "Events at Lloyd & Vale, including trade shows, open houses, field visits, and roundtables linked from the Gate 1 navigation structure.",
+  description: eventsPage.title,
   path: "/events",
 });
 

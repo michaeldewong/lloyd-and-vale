@@ -7,8 +7,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: submitSupportRequestPage.title,
-  description:
-    "Submit a structured support request with issue context, product details, and preferred contact method for Lloyd & Vale technical support.",
+  description: submitSupportRequestPage.confirmationMessage,
   path: "/support/submit-a-support-request",
 });
 

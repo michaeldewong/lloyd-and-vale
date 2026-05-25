@@ -7,8 +7,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: selectionStandards.title,
-  description:
-    "Selection standards used by Lloyd & Vale to evaluate products, document operating limits, and support reliable small-shop production.",
+  description: selectionStandards.introduction,
   path: "/about/selection-standards",
 });
 

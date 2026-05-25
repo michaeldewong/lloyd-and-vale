@@ -9,8 +9,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: learnPage.title,
-  description:
-    "Operator-facing learning resources including Operator Notes, Field Reports, practical guides, checklists, and training-focused content routes.",
+  description: learnPage.intro,
   path: "/learn",
 });
 

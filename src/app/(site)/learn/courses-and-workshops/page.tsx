@@ -5,8 +5,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: coursesAndWorkshopsPage.title,
-  description:
-    "Courses & Workshops route for Lloyd & Vale Learn, covering training-focused paths aligned with operator-facing production practice.",
+  description: coursesAndWorkshopsPage.title,
   path: "/learn/courses-and-workshops",
 });
 

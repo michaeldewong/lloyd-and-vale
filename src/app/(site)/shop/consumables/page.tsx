@@ -21,8 +21,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
   pageName: "Consumables",
-  description:
-    "Consumables organized by production impact, with Gate 1 catalog categories and evaluation-governed production-sensitive consumables.",
+  description: consumablesHero.subheadline,
   path: "/shop/consumables",
 });
 function mapGridItem(item: {
