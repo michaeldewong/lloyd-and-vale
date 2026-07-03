@@ -8,6 +8,16 @@ export const whoWeServePage = {
   title: "Who We Serve",
 } as const;
 
+export const productEvaluationPage = {
+  eyebrow: "About / Product Evaluation",
+  title: "Product Evaluation",
+} as const;
+
+export const whySelectionMattersPage = {
+  eyebrow: "About / Why Selection Matters",
+  title: "Why Selection Matters",
+} as const;
+
 export const equipmentPage = {
   eyebrow: "Shop / Equipment",
   title: "Equipment",
@@ -81,6 +91,16 @@ export const coursesAndWorkshopsPage = {
   title: "Courses & Workshops",
 } as const;
 
+export const supplierNotesPage = {
+  eyebrow: "Learn / Supplier Notes",
+  title: "Supplier Notes",
+} as const;
+
+export const blogPage = {
+  eyebrow: "Learn / Blog",
+  title: "Blog",
+} as const;
+
 export const tradeShowsPage = {
   eyebrow: "Events / Trade Shows",
   title: "Trade Shows",
@@ -99,4 +119,24 @@ export const fieldVisitsPage = {
 export const roundtablesAndSummitsPage = {
   eyebrow: "Events / Roundtables & Summits",
   title: "Roundtables & Summits",
+} as const;
+
+export const industriesDtfShopsPage = {
+  eyebrow: "Industries / DTF Shops",
+  title: "DTF Shops",
+} as const;
+
+export const industriesEmbroideryShopsPage = {
+  eyebrow: "Industries / Embroidery Shops",
+  title: "Embroidery Shops",
+} as const;
+
+export const industriesEtsyShopifySellersPage = {
+  eyebrow: "Industries / Etsy / Shopify Sellers",
+  title: "Etsy / Shopify Sellers",
+} as const;
+
+export const industriesPromotionalDecoratorsPage = {
+  eyebrow: "Industries / Promotional Decorators",
+  title: "Promotional Decorators",
 } as const;
